@@ -4,24 +4,14 @@ import com.example.proyectoFinal1.dto.RecyclingZoneDTO;
 import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.repository.RecyclingZoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class RecyclingZoneService {
 
     @Autowired
-    private static RecyclingZoneRepository recyclingZoneRepository;
-
-    public static void deleteRecyclingZone(Long RecyclingZoneid) {
-         boolean exists = recyclingZoneRepository.existsById(RecyclingZoneid);
-         if (!exists){
-             throw new IllegalStateException("RecyclingZone with id" + RecyclingZoneid + "does not exist");
-         }
-        recyclingZoneRepository.deleteById(RecyclingZoneid);
-    }
+    private RecyclingZoneRepository recyclingZoneRepository;
 
     public List<RecyclingZoneDTO> getAllRecyclingZones(){
         return recyclingZoneRepository.findAll().
