@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class RecyclingZoneDTO {
-    private Long recyclingZoneId;
+    private int recyclingZoneId;
     private String RecyclingZoneName;
     private String RecyclingZoneAdress;
 
