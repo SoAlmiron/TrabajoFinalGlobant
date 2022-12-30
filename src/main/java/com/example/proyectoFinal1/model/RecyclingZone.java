@@ -15,7 +15,7 @@ public class RecyclingZone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @Column(name = "name")
     private String name;
 

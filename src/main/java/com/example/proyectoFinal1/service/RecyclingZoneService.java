@@ -4,10 +4,12 @@ import com.example.proyectoFinal1.dto.RecyclingZoneDTO;
 import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.repository.RecyclingZoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class RecyclingZoneService {
 
     @Autowired
