@@ -13,7 +13,15 @@ import java.util.stream.Collectors;
 public class RecyclingZoneService {
 
     @Autowired
-    private RecyclingZoneRepository recyclingZoneRepository;
+    private static RecyclingZoneRepository recyclingZoneRepository;
+
+    public static void deleteRecyclingZone(Long RecyclingZoneid) {
+         boolean exists = recyclingZoneRepository.existsById(RecyclingZoneid);
+         if (!exists){
+             throw new IllegalStateException("RecyclingZone with id" + RecyclingZoneid + "does not exist");
+         }
+        recyclingZoneRepository.deleteById(RecyclingZoneid);
+    }
 
     public List<RecyclingZoneDTO> getAllRecyclingZones(){
         return recyclingZoneRepository.findAll().
