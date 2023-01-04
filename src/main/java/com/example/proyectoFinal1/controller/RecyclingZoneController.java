@@ -1,5 +1,6 @@
 package com.example.proyectoFinal1.controller;
 
+import com.example.proyectoFinal1.dto.RecyclingZoneDTO;
 import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.service.RecyclingZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class RecyclingZoneController {
     }
 
     @GetMapping
-    public List<RecyclingZone> getAllRecyclingZones(){
+    public List<RecyclingZoneDTO> getAllRecyclingZones(){
         return recyclingZoneService.getAllRecyclingZones();
     }
 

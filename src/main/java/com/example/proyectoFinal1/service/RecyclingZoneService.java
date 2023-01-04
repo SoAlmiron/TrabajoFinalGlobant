@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RecyclingZoneService {
@@ -31,15 +32,15 @@ public class RecyclingZoneService {
         recyclingZoneRepository.deleteById(RecyclingZoneid);
     }
 
-//    public List<RecyclingZoneDTO> getAllRecyclingZones(){
-//        return recyclingZoneRepository.findAll().
-//                stream().map(this::convertEntityToDTO).collect(Collectors.toList());
-//
-//    }
+    public List<RecyclingZoneDTO> getAllRecyclingZones(){
+        return recyclingZoneRepository.findAll().
+                stream().map(this::convertEntityToDTO).collect(Collectors.toList());
 
-    public List<RecyclingZone> getAllRecyclingZones() {
-        return recyclingZoneRepository.findAll();
     }
+
+//    public List<RecyclingZone> getAllRecyclingZones() {
+//        return recyclingZoneRepository.findAll();
+//    }
     public void addNewZone(RecyclingZone recyclingZone) {
         recyclingZoneRepository.save(recyclingZone);
 
