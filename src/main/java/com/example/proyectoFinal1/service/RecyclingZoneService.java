@@ -13,9 +13,18 @@ import java.util.stream.Collectors;
 public class RecyclingZoneService {
 
     @Autowired
-    private static RecyclingZoneRepository recyclingZoneRepository;
+    private final RecyclingZoneRepository recyclingZoneRepository;
 
-    public static void deleteRecyclingZone(Long RecyclingZoneid) {
+    public RecyclingZoneService(RecyclingZoneRepository recyclingZoneRepository) {
+        this.recyclingZoneRepository = recyclingZoneRepository;
+    }
+
+
+    public void addNewRecyclingZone(RecyclingZone recyclingZone) {
+        recyclingZoneRepository.save(recyclingZone);
+    }
+
+    public void deleteRecyclingZone(Long RecyclingZoneid) {
          boolean exists = recyclingZoneRepository.existsById(RecyclingZoneid);
          if (!exists){
              throw new IllegalStateException("RecyclingZone with id" + RecyclingZoneid + "does not exist");
@@ -29,6 +38,14 @@ public class RecyclingZoneService {
 
     }
 
+//    public List<RecyclingZone> getAllRecyclingZones() {
+//        return recyclingZoneRepository.findAll();
+//    }
+    public void addNewZone(RecyclingZone recyclingZone) {
+        recyclingZoneRepository.save(recyclingZone);
+
+    }
+
     private RecyclingZoneDTO convertEntityToDTO(RecyclingZone recyclingZone){
         RecyclingZoneDTO recyclingZoneDTO = new RecyclingZoneDTO();
         recyclingZoneDTO.setRecyclingZoneId(recyclingZone.getId());
@@ -37,4 +54,7 @@ public class RecyclingZoneService {
 
         return recyclingZoneDTO;
     }
+
+
+
 }

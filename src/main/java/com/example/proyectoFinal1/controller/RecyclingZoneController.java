@@ -1,29 +1,38 @@
 package com.example.proyectoFinal1.controller;
 
 import com.example.proyectoFinal1.dto.RecyclingZoneDTO;
+import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.service.RecyclingZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/recyclingzone")
 public class RecyclingZoneController {
 
-    @Autowired
-    private RecyclingZoneService recyclingZoneService;
+//    @Autowired
+//    private RecyclingZoneService recyclingZoneService;
 
-    @GetMapping("/recyclingzone")
+    private final RecyclingZoneService recyclingZoneService;
+    @Autowired
+    public RecyclingZoneController(RecyclingZoneService recyclingZoneService) {
+        this.recyclingZoneService = recyclingZoneService;
+    }
+
+    @PostMapping
+    public void registerNewRecyclingZone(@RequestBody RecyclingZone recyclingZone){
+        recyclingZoneService.addNewRecyclingZone(recyclingZone);
+    }
+
+    @GetMapping
     public List<RecyclingZoneDTO> getAllRecyclingZones(){
         return recyclingZoneService.getAllRecyclingZones();
     }
 
     @DeleteMapping(path = "{RecyclingZoneId}")
-    public void deteleteRecyclingZone(@PathVariable("studentId") Long id) {
-        RecyclingZoneService.deleteRecyclingZone(id);
+    public void deteleteRecyclingZone(@PathVariable("RecyclingZoneId") Long RecyclingZoneId) {
+        recyclingZoneService.deleteRecyclingZone(RecyclingZoneId);
     }
 }

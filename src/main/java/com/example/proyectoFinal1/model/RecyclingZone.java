@@ -29,4 +29,10 @@ public class RecyclingZone {
     private long longitude;
 
 
+    public RecyclingZone(String name, String adress, long latitude, long longitude) {
+        this.name = name;
+        this.adress = adress;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }
