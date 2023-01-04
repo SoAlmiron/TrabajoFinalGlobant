@@ -21,6 +21,11 @@ public class RecyclingZoneController {
         recyclingZoneService.addNewRecyclingZone(recyclingZone);
     }
 
+    @GetMapping("{id}")
+    public RecyclingZoneDTO getRecyclingZoneById(@PathVariable("id") Long id){
+        return recyclingZoneService.getRecyclingZoneById(id);
+    }
+
     @GetMapping
     public List<RecyclingZoneDTO> getAllRecyclingZones(){
         return recyclingZoneService.getAllRecyclingZones();

@@ -30,9 +30,6 @@ public class RecyclingZoneService {
 
     }
 
-//    public List<RecyclingZone> getAllRecyclingZones() {
-//        return recyclingZoneRepository.findAll();
-//    }
     public void addNewRecyclingZone(RecyclingZone recyclingZone) {
         recyclingZoneRepository.save(recyclingZone);
 
