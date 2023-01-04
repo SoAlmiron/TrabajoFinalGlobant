@@ -4,22 +4,17 @@ import com.example.proyectoFinal1.dto.RecyclingZoneDTO;
 import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.service.RecyclingZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/recyclingzone")
+@RequestMapping("/recyclingzones")
 public class RecyclingZoneController {
 
-//    @Autowired
-//    private RecyclingZoneService recyclingZoneService;
-
-    private final RecyclingZoneService recyclingZoneService;
     @Autowired
-    public RecyclingZoneController(RecyclingZoneService recyclingZoneService) {
-        this.recyclingZoneService = recyclingZoneService;
-    }
+    private RecyclingZoneService recyclingZoneService;
 
     @PostMapping
     public void registerNewRecyclingZone(@RequestBody RecyclingZone recyclingZone){
@@ -31,8 +26,8 @@ public class RecyclingZoneController {
         return recyclingZoneService.getAllRecyclingZones();
     }
 
-    @DeleteMapping(path = "{RecyclingZoneId}")
-    public void deteleteRecyclingZone(@PathVariable("RecyclingZoneId") Long RecyclingZoneId) {
-        recyclingZoneService.deleteRecyclingZone(RecyclingZoneId);
+    @DeleteMapping("{id}")
+    public void deleteRecyclingZone(@PathVariable("id") Long id) {
+        recyclingZoneService.deleteRecyclingZone(id);
     }
 }

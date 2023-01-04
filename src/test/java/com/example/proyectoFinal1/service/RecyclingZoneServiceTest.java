@@ -30,9 +30,10 @@ class RecyclingZoneServiceTest {
     @BeforeEach
     void setUp() {
         rz = new RecyclingZone();
-        rz.setName("hola");
-        rz.setId(1);
-        rz.setAdress("fdsa");
+        rz.setName("Plaza");
+        rz.setAdress("Colon 1456");
+        rz.setLatitude(500);
+        rz.setLongitude(600);
     }
 
     @Test

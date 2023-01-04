@@ -7,22 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class RecyclingZoneService {
 
     @Autowired
-    private final RecyclingZoneRepository recyclingZoneRepository;
-
-    public RecyclingZoneService(RecyclingZoneRepository recyclingZoneRepository) {
-        this.recyclingZoneRepository = recyclingZoneRepository;
-    }
-
-
-    public void addNewRecyclingZone(RecyclingZone recyclingZone) {
-        recyclingZoneRepository.save(recyclingZone);
-    }
+    private RecyclingZoneRepository recyclingZoneRepository;
 
     public void deleteRecyclingZone(Long RecyclingZoneid) {
          boolean exists = recyclingZoneRepository.existsById(RecyclingZoneid);
@@ -41,11 +33,24 @@ public class RecyclingZoneService {
 //    public List<RecyclingZone> getAllRecyclingZones() {
 //        return recyclingZoneRepository.findAll();
 //    }
-    public void addNewZone(RecyclingZone recyclingZone) {
+    public void addNewRecyclingZone(RecyclingZone recyclingZone) {
         recyclingZoneRepository.save(recyclingZone);
 
     }
 
+    public RecyclingZoneDTO getRecyclingZoneById(Long recyclingZoneId){
+        boolean exists = recyclingZoneRepository.existsById(recyclingZoneId);
+        if (!exists) {
+            throw new IllegalStateException("RecyclingZone with id" + recyclingZoneId + "does not exist");
+        }
+         Optional<RecyclingZone> rz= recyclingZoneRepository.findById(recyclingZoneId);
+         RecyclingZoneDTO rzDTO = convertEntityToDTO(rz.get());
+         return rzDTO;
+    }
+
+    public RecyclingZone saveRecyclingZone(RecyclingZone recyclingZone){
+        return recyclingZoneRepository.save(recyclingZone);
+    }
     private RecyclingZoneDTO convertEntityToDTO(RecyclingZone recyclingZone){
         RecyclingZoneDTO recyclingZoneDTO = new RecyclingZoneDTO();
         recyclingZoneDTO.setRecyclingZoneId(recyclingZone.getId());
@@ -54,7 +59,4 @@ public class RecyclingZoneService {
 
         return recyclingZoneDTO;
     }
-
-
-
 }
