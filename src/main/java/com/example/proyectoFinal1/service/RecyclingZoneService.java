@@ -7,15 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RecyclingZoneService {
 
     @Autowired
-    private static RecyclingZoneRepository recyclingZoneRepository;
+    private final RecyclingZoneRepository recyclingZoneRepository;
 
-    public static void deleteRecyclingZone(Long RecyclingZoneid) {
+    public RecyclingZoneService(RecyclingZoneRepository recyclingZoneRepository) {
+        this.recyclingZoneRepository = recyclingZoneRepository;
+    }
+
+
+    public void addNewRecyclingZone(RecyclingZone recyclingZone) {
+        recyclingZoneRepository.save(recyclingZone);
+    }
+
+    public void deleteRecyclingZone(Long RecyclingZoneid) {
          boolean exists = recyclingZoneRepository.existsById(RecyclingZoneid);
          if (!exists){
              throw new IllegalStateException("RecyclingZone with id" + RecyclingZoneid + "does not exist");
@@ -23,9 +31,17 @@ public class RecyclingZoneService {
         recyclingZoneRepository.deleteById(RecyclingZoneid);
     }
 
-    public List<RecyclingZoneDTO> getAllRecyclingZones(){
-        return recyclingZoneRepository.findAll().
-                stream().map(this::convertEntityToDTO).collect(Collectors.toList());
+//    public List<RecyclingZoneDTO> getAllRecyclingZones(){
+//        return recyclingZoneRepository.findAll().
+//                stream().map(this::convertEntityToDTO).collect(Collectors.toList());
+//
+//    }
+
+    public List<RecyclingZone> getAllRecyclingZones() {
+        return recyclingZoneRepository.findAll();
+    }
+    public void addNewZone(RecyclingZone recyclingZone) {
+        recyclingZoneRepository.save(recyclingZone);
 
     }
 
@@ -37,4 +53,7 @@ public class RecyclingZoneService {
 
         return recyclingZoneDTO;
     }
+
+
+
 }
