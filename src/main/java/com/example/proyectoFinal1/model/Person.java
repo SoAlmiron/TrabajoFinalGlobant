@@ -20,13 +20,15 @@ public class Person {
     private Long id;
     private String name;
     private String surname;
+    private String neighborhood;
     private String address;
     private LocalDate dateOfBirth;
 
 
-    public Person(String name, String surname, String address, LocalDate dateOfBirth) {
+    public Person(String name, String surname, String neighborhood, String address, LocalDate dateOfBirth) {
         this.name = name;
         this.surname = surname;
+        this.neighborhood = neighborhood;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
     }
