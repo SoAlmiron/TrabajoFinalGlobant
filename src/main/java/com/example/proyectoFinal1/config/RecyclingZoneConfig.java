@@ -1,5 +1,6 @@
-package com.example.proyectoFinal1.model;
+package com.example.proyectoFinal1.config;
 
+import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.repository.RecyclingZoneRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
