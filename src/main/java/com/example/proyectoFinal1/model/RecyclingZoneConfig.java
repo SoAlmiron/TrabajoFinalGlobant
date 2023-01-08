@@ -20,6 +20,7 @@ public class RecyclingZoneConfig {
                     "Deodoro Roca, Córdoba",
                     314298538,
                     641807827
+
             );
 
             RecyclingZone plazaDeLaMusica = new RecyclingZone(

@@ -1,7 +1,9 @@
 package com.example.proyectoFinal1.service;
 
 import com.example.proyectoFinal1.model.RecyclingZone;
+import com.example.proyectoFinal1.model.ZoneSupervisor;
 import com.example.proyectoFinal1.repository.RecyclingZoneRepository;
+import com.example.proyectoFinal1.repository.ZoneSupervisorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,11 +23,13 @@ import static org.mockito.Mockito.when;
 class RecyclingZoneServiceTest {
     @Mock
     RecyclingZoneRepository recyclingZoneRepository;
+    ZoneSupervisorRepository zoneSupervisorRepository;
 
     @InjectMocks
     RecyclingZoneService recyclingZoneService;
-
+    ZoneSupervisorService zoneSupervisorService;
     private RecyclingZone rz;
+    private ZoneSupervisor zs;
 
     @BeforeEach
     void setUp() {
