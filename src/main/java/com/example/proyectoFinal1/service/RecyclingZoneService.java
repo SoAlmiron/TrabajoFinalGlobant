@@ -32,7 +32,6 @@ public class RecyclingZoneService {
 
     public void addNewRecyclingZone(RecyclingZone recyclingZone) {
         recyclingZoneRepository.save(recyclingZone);
-
     }
 
     public RecyclingZoneDTO getRecyclingZoneById(Long recyclingZoneId){
@@ -56,4 +55,15 @@ public class RecyclingZoneService {
 
         return recyclingZoneDTO;
     }
+
+    public void updateRecyclingZone(RecyclingZoneDTO recyclingZone, Long id){
+        Optional<RecyclingZone> exists = recyclingZoneRepository.findById(id);
+        RecyclingZone zone = exists.get();
+        zone.setId(recyclingZone.getRecyclingZoneId());
+        zone.setName(recyclingZone.getRecyclingZoneName());
+        zone.setAdress(recyclingZone.getRecyclingZoneAdress());
+
+        recyclingZoneRepository.save(zone);
+    }
+
 }
