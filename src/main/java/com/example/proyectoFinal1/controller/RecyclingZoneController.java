@@ -36,7 +36,7 @@ public class RecyclingZoneController {
         recyclingZoneService.deleteRecyclingZone(id);
     }
 
-    @PutMapping("{id}/update")
+    @PutMapping("{id}")
     public void updateRecyclingZone(@PathVariable("id") Long id, @RequestBody RecyclingZoneDTO recyclingZone){
         recyclingZoneService.updateRecyclingZone(recyclingZone, id);
     }
