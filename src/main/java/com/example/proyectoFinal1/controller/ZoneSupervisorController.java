@@ -20,15 +20,15 @@ public class ZoneSupervisorController {
         zoneSupervisorService.addNewZoneSupervisor(zoneSupervisor);
     }
 
-    @GetMapping("{id}")
-    public ZoneSupervisorDTO getZoneSupervisorById(@PathVariable("id") Long id){
-        return zoneSupervisorService.getZoneSupervisorById(id);
-    }
+//    @GetMapping("{id}")
+//    public ZoneSupervisorDTO getZoneSupervisorById(@PathVariable("id") Long id){
+//        return zoneSupervisorService.getZoneSupervisorById(id);
+//    }
 
-    @GetMapping
-    public List<ZoneSupervisorDTO> getAllZoneSupervisors(){
-        return zoneSupervisorService.getAllZoneSupervisors();
-    }
+//    @GetMapping
+//    public List<ZoneSupervisorDTO> getAllZoneSupervisors(){
+//        return zoneSupervisorService.getAllZoneSupervisors();
+//    }
 
     @DeleteMapping("{id}")
     public void deleteZoneSupervisor(@PathVariable("id") Long id) {

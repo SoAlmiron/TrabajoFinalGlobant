@@ -51,8 +51,9 @@ public class RecyclingZoneService {
         RecyclingZoneDTO recyclingZoneDTO = new RecyclingZoneDTO();
         recyclingZoneDTO.setRecyclingZoneId(recyclingZone.getId());
         recyclingZoneDTO.setRecyclingZoneName(recyclingZone.getName());
-        recyclingZoneDTO.setRecyclingZoneAdress(recyclingZone.getAdress());
-
+        recyclingZoneDTO.setRecyclingZoneAddress(recyclingZone.getAdress());
+        recyclingZoneDTO.setZoneSupervisorId(recyclingZone.getZoneSupervisor().getId());
+        recyclingZoneDTO.setZoneSupervisorName(recyclingZone.getZoneSupervisor().getName());
         return recyclingZoneDTO;
     }
 

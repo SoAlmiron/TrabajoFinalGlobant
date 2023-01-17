@@ -1,5 +1,5 @@
 package com.example.proyectoFinal1.model;
-
+import com.example.proyectoFinal1.model.RecyclingZone;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,15 +28,10 @@ public class ZoneSupervisor {
     @Column(name = "capacidadOcupacion")
     private String capacidadOcupacion;
 
-    @Column(name = "zoneId")
-    private long zoneId;
 
-
-    public ZoneSupervisor(String name, String estadoZonaDeReciclaje, String capacidadOcupacion, long zoneId) {
+    public ZoneSupervisor(String name, String estadoZonaDeReciclaje, String capacidadOcupacion) {
         this.name = name;
         this.estadoZonaDeReciclaje = estadoZonaDeReciclaje;
         this.capacidadOcupacion = capacidadOcupacion;
-        this.zoneId=zoneId;
     }
-
 }

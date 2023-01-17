@@ -28,12 +28,15 @@ public class RecyclingZone {
 
     @Column(name = "longitude")
     private long longitude;
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "zoneSupervisor_id")
+    private ZoneSupervisor zoneSupervisor;
 
-
-    public RecyclingZone(String name, String adress, long latitude, long longitude) {
+    public RecyclingZone(String name, String adress, long latitude, long longitude, ZoneSupervisor zoneSupervisor) {
         this.name = name;
         this.adress = adress;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.zoneSupervisor = zoneSupervisor;
     }
 }
