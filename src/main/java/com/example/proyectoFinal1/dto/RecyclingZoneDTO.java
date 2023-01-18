@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class RecyclingZoneDTO {
     private Long recyclingZoneId;
-    private String RecyclingZoneName;
-    private String RecyclingZoneAddress;
-    private Long ZoneSupervisorId;
-    private String ZoneSupervisorName;
+    private String recyclingZoneName;
+    private String recyclingZoneAddress;
+    private Long zoneSupervisorId;
+    private String zoneSupervisorName;
 
 
-    public Long getRecyclingZoneId() {
+    /*public Long getRecyclingZoneId() {
         return recyclingZoneId;
     }
 
@@ -33,6 +33,6 @@ public class RecyclingZoneDTO {
 
     public void setRecyclingZoneAdress(String recyclingZoneAdress) {
         this.RecyclingZoneAddress = recyclingZoneAdress;
-    }
+    }*/
 
 }
