@@ -27,7 +27,7 @@ public class RecyclingZoneController {
     }
 
     @GetMapping
-    public List<RecyclingZoneDTO> getAllRecyclingZones(){
+    public List<RecyclingZone> getAllRecyclingZones(){
         return recyclingZoneService.getAllRecyclingZones();
     }
 
@@ -36,8 +36,8 @@ public class RecyclingZoneController {
         recyclingZoneService.deleteRecyclingZone(id);
     }
 
-    @PutMapping("{id}/update")
+    /*@PutMapping("{id}/update")
     public void updateRecyclingZone(@PathVariable("id") Long id, @RequestBody RecyclingZoneDTO recyclingZone){
         recyclingZoneService.updateRecyclingZone(recyclingZone, id);
-    }
+    }*/
 }

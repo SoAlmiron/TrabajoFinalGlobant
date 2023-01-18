@@ -24,9 +24,9 @@ public class RecyclingZoneService {
         recyclingZoneRepository.deleteById(RecyclingZoneid);
     }
 
-    public List<RecyclingZoneDTO> getAllRecyclingZones(){
-        return recyclingZoneRepository.findAll().
-                stream().map(this::convertEntityToDTO).collect(Collectors.toList());
+    public List<RecyclingZone> getAllRecyclingZones(){
+        return recyclingZoneRepository.findAll();
+                //stream().map(this::convertEntityToDTO).collect(Collectors.toList());
 
     }
 
@@ -51,17 +51,20 @@ public class RecyclingZoneService {
         RecyclingZoneDTO recyclingZoneDTO = new RecyclingZoneDTO();
         recyclingZoneDTO.setRecyclingZoneId(recyclingZone.getId());
         recyclingZoneDTO.setRecyclingZoneName(recyclingZone.getName());
-        recyclingZoneDTO.setRecyclingZoneAdress(recyclingZone.getAdress());
-
+        recyclingZoneDTO.setRecyclingZoneAddress(recyclingZone.getAdress());
+        recyclingZoneDTO.setZoneSupervisorId(recyclingZone.getZoneSupervisor().getId());
+        recyclingZoneDTO.setZoneSupervisorName(recyclingZone.getZoneSupervisor().getName());
         return recyclingZoneDTO;
     }
 
-    public void updateRecyclingZone(RecyclingZoneDTO recyclingZone, Long id){
+    public void updateRecyclingZone(RecyclingZone recyclingZone, Long id){
         Optional<RecyclingZone> exists = recyclingZoneRepository.findById(id);
         RecyclingZone zone = exists.get();
-        zone.setId(recyclingZone.getRecyclingZoneId());
-        zone.setName(recyclingZone.getRecyclingZoneName());
-        zone.setAdress(recyclingZone.getRecyclingZoneAdress());
+        zone.setId(recyclingZone.getId());
+        zone.setName(recyclingZone.getName());
+        zone.setAdress(recyclingZone.getAdress());
+        zone.setLatitude(recyclingZone.getLatitude());
+        zone.setLongitude(recyclingZone.getLongitude());
 
         recyclingZoneRepository.save(zone);
     }
