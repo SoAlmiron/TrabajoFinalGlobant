@@ -17,4 +17,8 @@ public class PersonService {
     public List<Person> getAllPersons() {
         return repository.findAll();
     }
+
+    public void addNewPerson(Person person) {
+        repository.save(person);
+    }
 }
