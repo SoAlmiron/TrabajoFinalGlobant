@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class RecyclingZoneService {
@@ -31,6 +30,11 @@ public class RecyclingZoneService {
     }
 
     public void addNewRecyclingZone(RecyclingZone recyclingZone) {
+//        for (Container container :recyclingZone.getContainers()){
+//            if(Type.valueOf(container.getType().getValue()) != Type.GLASS){
+//                throw new IllegalArgumentException("incorrectooooo");
+//            }
+//        }
         recyclingZoneRepository.save(recyclingZone);
     }
 
@@ -43,6 +47,8 @@ public class RecyclingZoneService {
          RecyclingZoneDTO rzDTO = convertEntityToDTO(rz.get());
          return rzDTO;
     }
+
+
 
     public RecyclingZone saveRecyclingZone(RecyclingZone recyclingZone){
         return recyclingZoneRepository.save(recyclingZone);

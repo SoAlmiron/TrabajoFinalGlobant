@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +31,10 @@ public class RecyclingZone {
 
     @Column(name = "longitude")
     private Long longitude;
+
+    @OneToMany(mappedBy = "recyclingZone", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Container> containers;
 
     @OneToOne(mappedBy = "recyclingZone", cascade = CascadeType.ALL, optional = true)
     @JsonManagedReference //IMPORTANTE
