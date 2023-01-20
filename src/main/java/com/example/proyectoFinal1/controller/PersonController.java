@@ -5,9 +5,7 @@ import com.example.proyectoFinal1.model.Person;
 import com.example.proyectoFinal1.service.PersonService;
 import jakarta.persistence.GeneratedValue;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +18,11 @@ public class PersonController {
 
     public PersonController(PersonService personService) {
         this.personService = personService;
+    }
+
+    @PostMapping
+    public void registerNewPerson(@RequestBody Person person){
+        personService.addNewPerson(person);
     }
 
     @GetMapping
