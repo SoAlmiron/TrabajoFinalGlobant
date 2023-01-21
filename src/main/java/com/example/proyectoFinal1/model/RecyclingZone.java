@@ -27,10 +27,10 @@ public class RecyclingZone {
     private String adress;
 
     @Column(name = "latitude")
-    private Long latitude;
+    private Double latitude;
 
     @Column(name = "longitude")
-    private Long longitude;
+    private Double longitude;
 
     @OneToMany(mappedBy = "recyclingZone", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
