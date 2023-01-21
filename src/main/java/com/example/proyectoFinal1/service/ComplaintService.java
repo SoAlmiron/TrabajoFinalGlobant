@@ -18,4 +18,8 @@ public class ComplaintService {
     public List<Complaint> getAllComplaints() {
         return repository.findAll();
     }
+
+    public void addNewComplaint(Complaint complaint) {
+        repository.save(complaint);
+    }
 }
