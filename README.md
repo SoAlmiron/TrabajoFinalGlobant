@@ -39,4 +39,4 @@
   }
 
 ## Get all complaints:
-- POST localhost:8080/complaints
+- GET localhost:8080/complaints
