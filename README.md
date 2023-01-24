@@ -28,3 +28,15 @@
 }
 
 - GET localhost:8080/recyclingzones
+
+## Create new complaint:
+- POST localhost:8080/complaints
+  - Body:
+  {
+  "person": {"id":1},
+  "complaintReason": 1, // 0-MISUSE 1-VANDALISM 2-OTHER
+  "description": "One of the containers was destroyed"
+  }
+
+## Get all complaints:
+- POST localhost:8080/complaints
