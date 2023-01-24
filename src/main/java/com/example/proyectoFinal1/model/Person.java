@@ -1,14 +1,16 @@
 package com.example.proyectoFinal1.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -23,6 +25,10 @@ public class Person {
     private String neighborhood;
     private String address;
     private LocalDate dateOfBirth;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "person")
+    private List<Complaint> complaints = new ArrayList<>();
 
 
     public Person(String name, String surname, String neighborhood, String address, LocalDate dateOfBirth) {
