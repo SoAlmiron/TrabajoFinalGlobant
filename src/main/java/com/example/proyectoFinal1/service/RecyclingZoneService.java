@@ -38,16 +38,36 @@ public class RecyclingZoneService {
         recyclingZoneRepository.save(recyclingZone);
     }
 
-    public RecyclingZoneDTO getRecyclingZoneById(Long recyclingZoneId){
+    public RecyclingZone getRecyclingZoneById(Long recyclingZoneId){
         boolean exists = recyclingZoneRepository.existsById(recyclingZoneId);
         if (!exists) {
             throw new IllegalStateException("RecyclingZone with id" + recyclingZoneId + "does not exist");
         }
          Optional<RecyclingZone> rz= recyclingZoneRepository.findById(recyclingZoneId);
-         RecyclingZoneDTO rzDTO = convertEntityToDTO(rz.get());
-         return rzDTO;
+         //RecyclingZoneDTO rzDTO = convertEntityToDTO(rz.get());
+         return rz.get();
     }
 
+    public double getRecyclingZonesDistance(Long id1, Long id2){
+        Optional<RecyclingZone> rz1 = recyclingZoneRepository.findById(id1);
+        Optional<RecyclingZone> rz2 = recyclingZoneRepository.findById(id2);
+        Double latitude1 = rz1.get().getLatitude();
+        Double longitude1 = rz1.get().getLongitude();
+        Double latitude2 = rz2.get().getLatitude();
+        Double longitude2 = rz2.get().getLongitude();
+
+        Double diferenciaLats = (latitude2 - latitude1)*Math.PI/180;
+        Double diferenciaLongs = (longitude2 - longitude1)*Math.PI/180;
+
+        double a = Math.pow(Math.sin(diferenciaLats/2), 2) +
+                Math.cos(latitude1*Math.PI/180)*
+                    Math.cos(latitude2*Math.PI/180)*
+                        Math.pow(Math.sin(diferenciaLongs/2), 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return 6378.0 * c;
+    }
 
 
     public RecyclingZone saveRecyclingZone(RecyclingZone recyclingZone){

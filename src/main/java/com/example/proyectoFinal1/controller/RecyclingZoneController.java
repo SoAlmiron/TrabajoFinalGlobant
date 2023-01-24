@@ -22,13 +22,18 @@ public class RecyclingZoneController {
     }
 
     @GetMapping("{id}")
-    public RecyclingZoneDTO getRecyclingZoneById(@PathVariable("id") Long id){
+    public RecyclingZone getRecyclingZoneById(@PathVariable("id") Long id){
         return recyclingZoneService.getRecyclingZoneById(id);
     }
 
     @GetMapping
     public List<RecyclingZone> getAllRecyclingZones(){
         return recyclingZoneService.getAllRecyclingZones();
+    }
+
+    @GetMapping("distancia/{id}/{otherId}")
+    public String getRecyclingZonesDistance(@PathVariable("id") Long id, @PathVariable("otherId")Long otherId){
+        return recyclingZoneService.getRecyclingZonesDistance(id, otherId) + "km";
     }
 
     @DeleteMapping("{id}")
@@ -40,4 +45,5 @@ public class RecyclingZoneController {
     public void updateRecyclingZone(@PathVariable("id") Long id, @RequestBody RecyclingZoneDTO recyclingZone){
         recyclingZoneService.updateRecyclingZone(recyclingZone, id);
     }*/
+
 }
