@@ -21,6 +21,9 @@ public class Container {
 
     private ThrashType type;
 
+    @Column(name = "occupancyCapacity")
+    private OcupancyCapacity ocupancyCapacity;
+
     @ManyToOne
     @JoinColumn(name = "recyclingZone_id")
     @JsonBackReference

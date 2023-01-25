@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.beans.ConstructorProperties;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -14,29 +15,21 @@ import java.beans.ConstructorProperties;
 @Entity
 
 @Table(name = "zonesupervisors")
-public class ZoneSupervisor {
+public class ZoneSupervisor extends Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "recyclingZoneState")
-    private String recyclingZoneState;
-
-    @Column(name = "occupancyCapacity")
-    private String occupancyCapacity;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recyclingZone_id")
     @JsonBackReference //IMPORTANTE
     private RecyclingZone recyclingZone;
 
-    /*public ZoneSupervisor(String name, String estadoZonaDeReciclaje, String capacidadOcupacion) {
-        this.name = name;
-        this.estadoZonaDeReciclaje = estadoZonaDeReciclaje;
-        this.capacidadOcupacion = capacidadOcupacion;
-    }*/
+    public ZoneSupervisor(String name, Long id, RecyclingZone recyclingZone) {
+        super(name);
+        this.id = id;
+        this.recyclingZone = recyclingZone;
+    }
+
 }

@@ -32,6 +32,9 @@ public class RecyclingZone {
     @Column(name = "longitude")
     private Double longitude;
 
+    @Column(name = "state")
+    private RecyclingZoneState state;
+
     @OneToMany(mappedBy = "recyclingZone", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Container> containers;
