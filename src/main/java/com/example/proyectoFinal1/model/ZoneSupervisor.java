@@ -21,14 +21,16 @@ public class ZoneSupervisor extends Person{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recyclingZone_id")
     @JsonBackReference //IMPORTANTE
     private RecyclingZone recyclingZone;
 
-    public ZoneSupervisor(String name, Long id, RecyclingZone recyclingZone) {
+    public ZoneSupervisor(String name, RecyclingZone recyclingZone) {
         super(name);
-        this.id = id;
         this.recyclingZone = recyclingZone;
     }
 
