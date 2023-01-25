@@ -22,10 +22,11 @@ public class Container {
     private ThrashType type;
 
     @Column(name = "occupancyCapacity")
-    private OcupancyCapacity ocupancyCapacity;
+    private OccupancyCapacity occupancyCapacity;
 
     @ManyToOne
     @JoinColumn(name = "recyclingZone_id")
     @JsonBackReference
     private RecyclingZone recyclingZone;
+
 }
