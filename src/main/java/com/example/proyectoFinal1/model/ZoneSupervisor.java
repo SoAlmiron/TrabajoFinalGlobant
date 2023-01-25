@@ -21,6 +21,9 @@ public class ZoneSupervisor extends Person{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recyclingZone_id")
     @JsonBackReference //IMPORTANTE
