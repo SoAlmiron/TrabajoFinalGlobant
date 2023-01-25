@@ -1,3 +1,39 @@
+***
+## Add new Person:
+- POST localhost:8080/persons
+  -Body:
+  {
+  "name": "José",
+  "surname": "Martínez",
+  "neighborhood": "Cerro Chico",
+  "address": "Virrey Melo 3611",
+  "dateOfBirth": "1950-07-12"
+  }
+
+## Get all Persons:
+- GET localhost:8080/persons
+
+***
+
+## Create new Zone Supervisor
+- POST localhost:8080/zonesupervisors
+  -Body:
+  {
+  "name": "Tao",
+  "recyclingZoneState": "OK",
+  "occupancyCapacity": "FULL",
+  "recyclingZone":{"id":1}          //add this line if already exist almost one Recycling Zone  
+  }
+
+## Get all Zone Supervisors:
+- GET localhost:8080/zonesupervisors
+
+## Delete Zone Supervisor
+- DELETE localhost:8080/zonesupervisors/```Supervisor_id```
+
+***
+
+## Create new recycling zone:
 - POST localhost:8080/recyclingzones 
   - Body:
     {
@@ -26,8 +62,10 @@
     ]
 
 }
-
+## Get all recycling zones:
 - GET localhost:8080/recyclingzones
+
+***
 
 ## Create new complaint:
 - POST localhost:8080/complaints
@@ -40,3 +78,5 @@
 
 ## Get all complaints:
 - GET localhost:8080/complaints
+
+***
