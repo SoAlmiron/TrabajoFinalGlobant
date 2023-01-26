@@ -16,6 +16,7 @@ import java.util.Optional;
 public class SupervisionService {
     @Autowired
     private SupervisionRepository supervisionRepository;
+    @Autowired
     private RecyclingZoneRepository zoneRepository;
 
     public void newSupervision (Supervision supervision){
