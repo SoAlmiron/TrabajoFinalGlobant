@@ -32,4 +32,9 @@ public class ZoneSupervisorController {
     public void deleteZoneSupervisor(@PathVariable("id") Long id) {
         zoneSupervisorService.deleteZoneSupervisor(id);
     }
+
+    @PutMapping("{id}")
+    public void updateZoneSupervisor(@PathVariable("id") Long id, @RequestBody ZoneSupervisor supervisor){
+        zoneSupervisorService.updateZoneSupervisor(supervisor, id);
+    }
 }
