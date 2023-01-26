@@ -19,7 +19,7 @@ public class ContainerController {
     }
 
     @GetMapping("trashrecycling/{id}")
-    public void getRecyclingIdeas(@PathVariable("id") Long id){
-        containerService.getRecyclingIdeas(id);
+    public String getRecyclingIdeas(@PathVariable("id") Long id){
+        return containerService.getRecyclingIdeas(id);
     }
 }

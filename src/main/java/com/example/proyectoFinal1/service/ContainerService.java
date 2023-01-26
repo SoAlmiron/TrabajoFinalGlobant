@@ -18,13 +18,14 @@ public class ContainerService {
         return repository.findAll();
     }
 
-    public void getRecyclingIdeas(Long id){
+    public String getRecyclingIdeas(Long id){
         Optional<Container> container = repository.findById(id);
         ThrashType trash = container.get().getType();
+        String recipe;
 
         switch (trash) {
             case BATTERIES -> {
-                System.out.println("# Punto de recogida de pilas\n" +
+                recipe = "# Punto de recogida de pilas\n" +
                         "Para poder reciclar pilas localiza un punto de recogida. Se trata de lugares donde " +
                         "se lleva a cabo una recogida de pilas para su posterior gestión y reciclaje. " +
                         "# Métodos para reciclar las pilas\n" +
@@ -39,21 +40,18 @@ public class ContainerService {
                         "Usar pilas recargables: antes que de botón, alcalinas y otros tipos.\n" +
                         "\n" +
                         "Optar por las energías renovables en tu hogar: compra aparatos que usen energías menos contaminantes " +
-                        "o, energías limpias, como la energía solar.");
-                break;
+                        "o, energías limpias, como la energía solar.";
             }
             case GLASS -> {
-                System.out.println("# Ideas para reciclar botellas de vidrio:\n" +
+                recipe = "# Ideas para reciclar botellas de vidrio:\n" +
                         "· Usarlas como floreros de decoración, centros de mesa y en la cocina con plantas aromáticas.\n" +
                         "· Ponerlas en el baño, con palitos de sándalo que mantengan un olor fresco.\n" +
                         "· Como zapatero, colocándolas con tablas de madera u otro material.\n" +
                         "· Decorándolas con una fotografía a modo de etiqueta de la botella de vino y hacer un regalo de lo más original.\n" +
-                        "· Como lámparas, con bombillas o luces pequeñas e, incluso, portavelas.\n");
-
-                break;
+                        "· Como lámparas, con bombillas o luces pequeñas e, incluso, portavelas.\n";
             }
             case PAPER -> {
-                System.out.println("# Papel reciclado en casa\n" +
+                recipe = "# Papel reciclado en casa\n" +
                         "· Recolectar los papeles que normalmente se desechan a la basura. " +
                         "Tienen que estar limpios, por ejemplo sin restos de comida.\n" +
                         "· Cortarlos en pedazos de pequeño tamaño y ponerlos en remojo en un balde de agua durante una noche entera.\n" +
@@ -65,12 +63,10 @@ public class ContainerService {
                         "que te ayudará a absorberla.\n" +
                         "· Girar la malla de alambre hacia abajo, dejando caer el papel reciclado sobre cartón o periódico" +
                         " colocado sobre una superficie plana.\n" +
-                        "· Por último, espera un día a que tu papel reciclado se seque por completo.");
-
-                break;
+                        "· Por último, espera un día a que tu papel reciclado se seque por completo.";
             }
             case ORGANICS -> {
-                System.out.println("# Fertilizante orgánico casero con fósforo: cenizas de madera\n" +
+                recipe = "# Fertilizante orgánico casero con fósforo: cenizas de madera\n" +
                         "· Para usar las cenizas de madera como fertilizante, solo hay que mezclarlas con agua, " +
                         "para diluir así su contenido, y lo aplicamos a las plantas como riego. " +
                         "Es importante hacerlo solo unas 2 o 3 veces al año para que no sea excesivo.\n" +
@@ -86,11 +82,11 @@ public class ContainerService {
                         "# Fertilizante orgánico con calcio: cáscaras de huevo\n" +
                         "· Recopila un gran número de cáscaras de huevo.\n" +
                         "· Lávalas en caso de que aún contengan restos y triturarlas.\n" +
-                        "· Pueden aplicarse directamente en tierra, aunque la absorción por parte de las plantas será más lenta.");
-                break;
+                        "· Pueden aplicarse directamente en tierra, aunque la absorción por parte de las plantas será más lenta.";
             }
             default -> throw new IllegalStateException("Can't recycle type of garbage" + trash);
         }
+        return recipe;
     }
 
 }
