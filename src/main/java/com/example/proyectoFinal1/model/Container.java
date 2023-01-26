@@ -18,7 +18,7 @@ public class Container {
     private Long Id;
 
     private Long capacity;
-
+    @Column(name = "trashType")
     private ThrashType type;
 
     @Column(name = "occupancyCapacity")

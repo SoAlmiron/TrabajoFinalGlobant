@@ -21,8 +21,6 @@ public class Supervision {
 
     private LocalDateTime localDateTime;
 
-
-
     private double totalOccupancy;
 
     private Supervision() {
