@@ -1,5 +1,6 @@
 package com.example.proyectoFinal1.controller;
 
+import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.model.Supervision;
 import com.example.proyectoFinal1.service.SupervisionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class SupervisionController {
     @PostMapping
     public void newSupervision(@RequestBody Supervision supervision){
         service.newSupervision(supervision);
+    }
+
+    @GetMapping
+    public List<Supervision> getAllSupervisions(){
+        return service.getAllSupervisions();
     }
 
     @GetMapping("{id}")

@@ -1,7 +1,9 @@
 package com.example.proyectoFinal1.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 public class Supervision {
     @Id
