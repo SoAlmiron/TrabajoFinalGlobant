@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ZoneSupervisorRepository extends JpaRepository<ZoneSupervisor, Long>{
-    //List<ZoneSupervisor> zoneSupervisorRepository = new ArrayList<>();
+    List<ZoneSupervisor> zoneSupervisorRepository = new ArrayList<>();
 }

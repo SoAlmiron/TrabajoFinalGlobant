@@ -54,9 +54,6 @@ public class ZoneSupervisorService {
                 () -> new IllegalStateException("ZoneSupervisor with id" + id + "does not exist"));
         existingZoneSupervisor.setId(zoneSupervisor.getId());
         existingZoneSupervisor.setName(zoneSupervisor.getName());
-        existingZoneSupervisor.setOccupancyCapacity(zoneSupervisor.getOccupancyCapacity());
-        existingZoneSupervisor.setRecyclingZoneState(zoneSupervisor.getRecyclingZoneState());
-
         zoneSupervisorRepository.save(existingZoneSupervisor);
     }
 

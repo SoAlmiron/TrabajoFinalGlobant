@@ -30,13 +30,16 @@ public class Person {
     @OneToMany(mappedBy = "person")
     private List<Complaint> complaints = new ArrayList<>();
 
-
     public Person(String name, String surname, String neighborhood, String address, LocalDate dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.neighborhood = neighborhood;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Person(String name) {
+        this.name = name;
     }
 }
 
