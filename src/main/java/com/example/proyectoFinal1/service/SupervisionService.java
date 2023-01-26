@@ -8,7 +8,14 @@ import com.example.proyectoFinal1.repository.SupervisionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,5 +60,25 @@ public class SupervisionService {
 
     public List<Supervision> getAllSupervisions() {
         return supervisionRepository.findAll();
+    }
+
+    public double getSurvey(Long lastSupervisionId){
+
+        Optional<Supervision> lastSupervision = supervisionRepository.findById(lastSupervisionId);
+
+        Optional<Supervision> formerSupervision = supervisionRepository.
+                findById(lastSupervisionId-1);
+
+        /*LocalDateTime daysBetween = lastSupervision.getLocalDateTime().minusDays(
+                formerSupervision.get().getLocalDateTime().getDayOfMonth());
+
+        int day1 = lastSupervision.getLocalDateTime().getDayOfMonth();
+        int day2 = formerSupervision.get().getLocalDateTime().getDayOfMonth();*/
+
+        Period period = Period.between(lastSupervision.get().getLocalDateTime().toLocalDate(),
+                formerSupervision.get().getLocalDateTime().toLocalDate());
+
+        return 100 * period.getDays() / lastSupervision.get().getTotalOccupancy();
+
     }
 }
