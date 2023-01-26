@@ -35,6 +35,7 @@
 
 ## Create new recycling zone:
 - POST localhost:8080/recyclingzones
+
   - Body:
     {
     "name": "Eco Punto - Hiper Libertad",
@@ -72,6 +73,9 @@
 ## Get distance between two Recycling Zones:
 - GET localhost:8080/distance/```zone_id```/```otherZone_id```
 
+## Get all recycling zones:
+- GET localhost:8080/recyclingzones
+
 ***
 
 ## Create new complaint:
@@ -90,3 +94,5 @@
 
 ## Get Occupancy Capacity:
 - GET localhost:8080/capacity/```zone_id```
+
+***

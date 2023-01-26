@@ -33,7 +33,7 @@ public class RecyclingZoneController {
 
     @GetMapping("distance/{id}/{otherId}")
     public String getRecyclingZonesDistance(@PathVariable("id") Long id, @PathVariable("otherId")Long otherId){
-        return recyclingZoneService.getRecyclingZonesDistance(id, otherId) + "km";
+        return recyclingZoneService.getRecyclingZonesDistance(id, otherId) + " km";
     }
 
     @DeleteMapping("{id}")
