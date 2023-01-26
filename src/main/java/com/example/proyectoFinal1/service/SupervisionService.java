@@ -37,13 +37,14 @@ public class SupervisionService {
         int totalOccupancyCapacity = totalContainers * 1000;
         List<Container> containers = rz.get().getContainers();
         int totalCapacity = 0;
-        ArrayList<String> overloadContainers = null;
+        /*ArrayList<String> overloadContainers = null;*/
 
         for (Container i : containers) {
 
-            if (i.getOccupancyCapacity().getValue() == 1200) {
+           /*if (i.getOccupancyCapacity().getValue() == 1200) {
                 overloadContainers.add(i.getType().getValue());
-            }
+            }*/
+
             totalCapacity += i.getOccupancyCapacity().getValue();
         }
 

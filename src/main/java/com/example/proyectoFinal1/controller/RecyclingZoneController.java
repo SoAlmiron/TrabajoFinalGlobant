@@ -31,7 +31,7 @@ public class RecyclingZoneController {
         return recyclingZoneService.getAllRecyclingZones();
     }
 
-    @GetMapping("distancia/{id}/{otherId}")
+    @GetMapping("distance/{id}/{otherId}")
     public String getRecyclingZonesDistance(@PathVariable("id") Long id, @PathVariable("otherId")Long otherId){
         return recyclingZoneService.getRecyclingZonesDistance(id, otherId) + "km";
     }
@@ -41,9 +41,9 @@ public class RecyclingZoneController {
         recyclingZoneService.deleteRecyclingZone(id);
     }
 
-    /*@PutMapping("{id}/update")
-    public void updateRecyclingZone(@PathVariable("id") Long id, @RequestBody RecyclingZoneDTO recyclingZone){
+    @PutMapping("{id}")
+    public void updateRecyclingZone(@PathVariable("id") Long id, @RequestBody RecyclingZone recyclingZone){
         recyclingZoneService.updateRecyclingZone(recyclingZone, id);
-    }*/
+    }
 
 }
