@@ -48,4 +48,8 @@ public class SupervisionService {
 
         return totalCapacity * 100 / totalOccupancyCapacity + "%";
     }
+
+    public List<Supervision> getAllSupervisions() {
+        return supervisionRepository.findAll();
+    }
 }
