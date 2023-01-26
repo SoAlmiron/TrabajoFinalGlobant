@@ -1,6 +1,4 @@
 package com.example.proyectoFinal1.controller;
-
-import com.example.proyectoFinal1.model.RecyclingZone;
 import com.example.proyectoFinal1.model.Supervision;
 import com.example.proyectoFinal1.service.SupervisionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class SupervisionController {
     }
 
     @GetMapping("capacity/{id}")
-    public String getOccupancyCapacity (Long id){
+    public String getOccupancyCapacity (@PathVariable Long id){
         return service.getOccupancyCapacity(id);
     }
 }
