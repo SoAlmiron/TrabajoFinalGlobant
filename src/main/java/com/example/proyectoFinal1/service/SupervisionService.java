@@ -75,10 +75,16 @@ public class SupervisionService {
         int day1 = lastSupervision.getLocalDateTime().getDayOfMonth();
         int day2 = formerSupervision.get().getLocalDateTime().getDayOfMonth();*/
 
-        Period period = Period.between(lastSupervision.get().getLocalDateTime().toLocalDate(),
-                formerSupervision.get().getLocalDateTime().toLocalDate());
+        Period period = Period.between(formerSupervision.get().getLocalDateTime().toLocalDate(),
+                lastSupervision.get().getLocalDateTime().toLocalDate());
+        int days = 0;
+        int totalDays = 0;
+        if (period.getMonths() > 0) {
+            days = period.getMonths()*30;
+        }
+        totalDays = days + period.getDays();
 
-        return 100 * period.getDays() / lastSupervision.get().getTotalOccupancy();
+        return 100 * totalDays / lastSupervision.get().getTotalOccupancy();
 
     }
 }
