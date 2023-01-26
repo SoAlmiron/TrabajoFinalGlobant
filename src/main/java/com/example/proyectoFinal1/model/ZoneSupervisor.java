@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,5 +18,8 @@ public class ZoneSupervisor extends Person{
     @JoinColumn(name = "recyclingZone_id")
     @JsonBackReference //IMPORTANTE
     private RecyclingZone recyclingZone;
+
+    @OneToMany(mappedBy = "zoneSupervisor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Supervision> supervisions;
 
 }

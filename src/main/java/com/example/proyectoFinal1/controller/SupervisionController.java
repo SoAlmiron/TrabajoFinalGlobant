@@ -31,4 +31,10 @@ public class SupervisionController {
     public String getOccupancyCapacity (@PathVariable Long id){
         return service.getOccupancyCapacity(id);
     }
+
+    @GetMapping("survey/{lastSupervision_id}")
+    public double getSurvey(@PathVariable("lastSupervision_id") Long id){
+
+        return service.getSurvey(id);
+    }
 }
